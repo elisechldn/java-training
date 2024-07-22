@@ -6,7 +6,7 @@ public class ArrayTraining {
      */
     public int[] emptyIntArray(int n) {
 
-        return null;
+        return new int[n];
     }
 
     /**
@@ -15,7 +15,7 @@ public class ArrayTraining {
      */
     public String[] emptyStringArray(int n) {
 
-        return null;
+        return new String[n];
     }
 
     /**
@@ -25,8 +25,8 @@ public class ArrayTraining {
      * @return an int array with a, b and c values, eg: {3, 2, 1}
      */
     public int[] intArray(int a, int b, int c) {
-
-        return null;
+        int[] arr = {a,b,c};
+        return arr;
     }
 
     /**
@@ -37,8 +37,8 @@ public class ArrayTraining {
      * eg: {"test", sample", "value"}
      */
     public String[] stringArray(String a, String b, String c) {
-
-        return null;
+        String[] arr = {a, b, c};
+        return arr;
     }
 
     /**
@@ -47,7 +47,7 @@ public class ArrayTraining {
      */
     public int length(int[] array) {
 
-        return 0;
+        return length(array);
     }
 
     /**
@@ -56,7 +56,7 @@ public class ArrayTraining {
      */
     public int firstValue(int[] array) {
 
-        return 0;
+        return array[0];
     }
 
     /**
@@ -65,7 +65,7 @@ public class ArrayTraining {
      */
     public int lastValue(int[] array) {
 
-        return 0;
+        return array[-1];
     }
 
     /**
@@ -75,7 +75,7 @@ public class ArrayTraining {
      */
     public int valueAtPosition(int[] array, int position) {
 
-        return 0;
+        return array[position];
     }
 
     /**
@@ -85,8 +85,12 @@ public class ArrayTraining {
      * @return the array with the value replaced at position, eg: {3, 4, 5}
      */
     public int[] replace(int[] array, int value, int position) {
-
-        return null;
+        for ( int i = 0; i < array.length; i++) {
+            if( i == position) {
+                array[i] = value;
+            }
+        }
+        return array;
     }
 
     /**
@@ -95,7 +99,7 @@ public class ArrayTraining {
      */
     public int sum(int[] array) {
 
-        return 0;
+        return sum(array);
     }
 
     /**
@@ -104,18 +108,27 @@ public class ArrayTraining {
      * @return if array contains searched value, eg: true
      */
     public boolean contains(int[] array, int search) {
-
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == search) {
+            return true;
+            }
+        }
         return false;
     }
 
     /**
      * @param array, eg: {"sample", "value"}
      * @return array where all words are capitalized, eg: {"Sample", "Value"}
-     */
+*/
     public String[] capitalize(String[] array) {
-
-        return null;
-    }
+        String[] capitalizedArray = new String[array.length];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != null && array[i].length() > 0) {
+                capitalizedArray[i] = array[i].substring(0,1).toUpperCase() + array[i].substring(1).toLowerCase();
+            }
+        }
+        return capitalizedArray;
+    }     
 
     /**
      * @param first,  eg: {1, 2, 3}
@@ -124,17 +137,27 @@ public class ArrayTraining {
      * are equals, eg: false
      */
     public boolean equals(int[] first, int[] second) {
-
-        return false;
+        if ( first.length != second.length) {
+            return false;
+        }
+        for (int i = 0; i < first.length ; i++) {
+            if (first[i] != second[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
      * @param array, eg: {1, 2, 3}
      * @return array with reversed values, eg: {3, 2, 1}
-     */
+    */
     public int[] reverse(int[] array) {
-
-        return null;
+        int[] reversedArray = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            reversedArray[array.length -1 -i] = array[i];
+        }
+        return reversedArray;
     }
 
     /**
@@ -144,7 +167,9 @@ public class ArrayTraining {
      * eg: {1, 2, 3, 4, 5}
      */
     public int[] concat(int[] first, int[] second) {
-
-        return null;
+        int[] arr = new int[first.length + second.length];
+        System.arraycopy(first, 0, arr, 0, first.length);
+        System.arraycopy(second, 0, arr, first.length, second.length);
+        return arr;
     }
 }
